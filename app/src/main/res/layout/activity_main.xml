@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/cityInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите город"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/getWeatherButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Узнать погоду" />
+
+    <TextView
+        android:id="@+id/cityName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Город"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Температура"
+        android:textSize="36sp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/weatherDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Описание погоды"
+        android:gravity="center" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forecastRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        tools:listitem="@layout/item_forecast" />
+</LinearLayout>
