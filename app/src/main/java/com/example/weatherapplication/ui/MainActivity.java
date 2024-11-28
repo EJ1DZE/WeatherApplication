@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText cityInput;
     private Button getWeatherButton;
+    private Button getFethWeatherButton;
 
     private TextView cityName;
     private TextView temperature;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         cityInput = findViewById(R.id.cityInput);
         getWeatherButton = findViewById((R.id.getWeatherButton));
+        getFethWeatherButton = findViewById((R.id.getFetchWeatherButton));
 
         cityName = findViewById(R.id.cityName);
         temperature = findViewById(R.id.temperature);
@@ -76,8 +78,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        getFethWeatherButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FetchWeather();
+            }
+        });
+
+
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
+        FetchWeather();
+    }
+
+    private void FetchWeather(){
         // Проверяем разрешения
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -95,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
                         if (response.isSuccessful() && response.body() != null) {
                             WeatherResponse weather = response.body();
-                            cityName.setText(weather.getWeather().get(0).getMain());
+                            cityName.setText(weather.getName());
                             temperature.setText(weather.getMain().getTemp() + "°C");
                             weatherDescription.setText(weather.getWeather().get(0).getDescription());
 
@@ -160,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
                         if (response.isSuccessful() && response.body() != null) {
                             WeatherResponse weather = response.body();
-                            cityName.setText(weather.getWeather().get(0).getMain());
+                            cityName.setText(weather.getName());
                             temperature.setText(weather.getMain().getTemp() + "°C");
                             weatherDescription.setText(weather.getWeather().get(0).getDescription());
 

@@ -1,5 +1,7 @@
 package com.example.weatherapplication.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class WeatherResponse {
@@ -9,6 +11,14 @@ public class WeatherResponse {
     private Sys sys;
 
     private List<Forecast> list;
+
+    @SerializedName("name")
+    private String name;
+
+    public String getName()
+    {
+        return name;
+    }
 
     public List<Forecast> getList(){
         return list;

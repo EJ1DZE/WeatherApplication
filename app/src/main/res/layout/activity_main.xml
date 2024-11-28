@@ -19,6 +19,12 @@
         android:layout_height="wrap_content"
         android:text="Узнать погоду" />
 
+    <Button
+        android:id="@+id/getFetchWeatherButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Узнать погоду по геолокации"/>
+
     <TextView
         android:id="@+id/cityName"
         android:layout_width="match_parent"
